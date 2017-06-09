@@ -1,5 +1,6 @@
 import React, { SFC } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.css';
 
@@ -18,7 +19,9 @@ const Photos: SFC<any> = () => (
           Лайков: 5
         </div>
         <div className={styles.photoImg}>
-          <img src={img} />
+          <Link to="/img">
+            <img src={img} />
+          </Link>
         </div>
         <div className="photo__date">
           09.10.2017
