@@ -19,7 +19,7 @@ const Photos: SFC<any> = () => (
           Лайков: 5
         </div>
         <div className={styles.photoImg}>
-          <Link to="/img">
+          <Link to={`/img/1`}>
             <img src={img} />
           </Link>
         </div>

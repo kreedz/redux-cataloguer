@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 
-import Cataloguer from 'containers/Cataloguer';
+import Cataloguer from 'components/Cataloguer';
 
 const App: SFC<any> = () => (
   <Cataloguer />

@@ -9,7 +9,7 @@ import Search from 'components/Search';
 
 import styles from './styles.css';
 
-class Cataloguer extends React.Component<any, any> {
+class CataloguerView extends React.Component<any, any> {
   render() {
     return (
       <Grid className={styles.cataloguer}>
@@ -28,4 +28,4 @@ class Cataloguer extends React.Component<any, any> {
   }
 }
 
-export default Cataloguer;
+export default CataloguerView;

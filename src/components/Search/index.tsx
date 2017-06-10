@@ -1,8 +1,6 @@
 import React, { SFC } from 'react';
 import { Button, Col, FormControl, Row } from 'react-bootstrap';
 
-import styles from './styles.css';
-
 const Search: SFC<any> = () => (
   <Col xs={4}>
     <div className="input-group">
