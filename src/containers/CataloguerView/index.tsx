@@ -7,12 +7,12 @@ import Filter from 'components/Filter';
 import Photos from 'components/Photos';
 import Search from 'components/Search';
 
-import styles from './styles.css';
+import styles from 'styles/styles.css';
 
 class CataloguerView extends React.Component<any, any> {
   render() {
     return (
-      <Grid className={styles.cataloguer}>
+      <div>
         <Row className={styles.rowPadding}>
           <Search />
           <Add />
@@ -23,7 +23,7 @@ class CataloguerView extends React.Component<any, any> {
         <Row className={styles.rowPadding}>
           <Photos />
         </Row>
-      </Grid>
+      </div>
     );
   }
 }
