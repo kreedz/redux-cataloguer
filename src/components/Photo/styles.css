@@ -1,0 +1,26 @@
+.photo {
+  padding: 10px;
+}
+
+.photo__data {
+  display: block;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo__view {
+  height: 200px;
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  width: inherit;
+}
+
+.photo__view > img {
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+}
