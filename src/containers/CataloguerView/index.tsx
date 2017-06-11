@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { Col, Grid, Row } from 'react-bootstrap';
 
@@ -7,9 +8,15 @@ import Filter from 'components/Filter';
 import Photos from 'components/Photos';
 import Search from 'components/Search';
 
+import { loadData } from 'actions';
+import { IState } from 'reducers';
+
 import styles from 'styles/styles.css';
 
 class CataloguerView extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.loadData();
+  }
   render() {
     return (
       <div>
@@ -28,4 +35,5 @@ class CataloguerView extends React.Component<any, any> {
   }
 }
 
-export default CataloguerView;
+const mapStateToProps = ({photos}: {photos: IState}) => ({photos});
+export default connect(mapStateToProps, {loadData})(CataloguerView);
