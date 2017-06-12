@@ -6,7 +6,7 @@ const initialState: IPhoto[] =
   [
     {
       id: 1,
-      url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
+      url: 'https://s-media-cache-ak0.pinimg.com/736x/3e/3a/de/3e3adeff192f019738419858f4f998c2.jpg',
       like: 1,
       date: new Date('2017-06-17'),
     },

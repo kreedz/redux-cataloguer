@@ -8,7 +8,7 @@ import styles from './styles.css';
 
 const getPhotosLayout = (photos: IPhoto[]) =>
   photos.map((photo: IPhoto, index) => (
-    <div className={styles.photo} key={index}>
+    <Col md={3} className={styles.photo} key={photo.id}>
       <div className="photo__like">
         Лайков: {photo.like}
       </div>
@@ -20,7 +20,7 @@ const getPhotosLayout = (photos: IPhoto[]) =>
       <div className="photo__date">
         {photo.date.toLocaleDateString()}
       </div>
-    </div>
+</Col>
   ));
 
 const Photos: SFC<any> = ({photos}) => (
