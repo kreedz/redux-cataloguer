@@ -2,8 +2,14 @@ import { combineReducers } from 'redux';
 
 import photos from './photos';
 
+export interface IPhoto {
+  url: string;
+  like?: number;
+  date?: Date;
+}
+
 export interface IState {
-  urls: string[];
+  photos: IPhoto[];
   filter?: number;
   search?: string;
 }

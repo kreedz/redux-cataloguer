@@ -28,7 +28,7 @@ class CataloguerView extends React.Component<any, any> {
           <Filter />
         </Row>
         <Row className={styles.rowPadding}>
-          <Photos />
+          <Photos photos={this.props.photos} />
         </Row>
       </div>
     );

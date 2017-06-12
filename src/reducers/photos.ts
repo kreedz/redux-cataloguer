@@ -1,11 +1,21 @@
 import { Action, handleActions } from 'redux-actions';
 
-import { IState } from 'reducers';
+import { IPhoto } from 'reducers';
 
-const initialState: IState = {
-  urls: ['imgurl1', 'imgurl2'],
-};
+const initialState: IPhoto[] =
+  [
+    {
+      url: 'imgurl1',
+      like: 1,
+      date: new Date('2017-06-17'),
+    },
+    {
+      url: 'imgurl1',
+      like: 1,
+      date: new Date('2017-06-17'),
+    }
+  ];
 
-export default handleActions<IState>({
-  LOAD_DATA: (state: IState, action: Action<void>): IState => state,
+export default handleActions<IPhoto[]>({
+  // LOAD_DATA: (state: IState, action: Action<void>): IState => state,
 }, initialState);
