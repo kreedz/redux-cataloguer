@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import photos from './photos';
 
 export interface IPhoto {
+  id: number;
   url: string;
   like?: number;
   date?: Date;

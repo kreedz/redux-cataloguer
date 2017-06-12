@@ -4,9 +4,9 @@
   padding-right: 5px;
 }
 
-.photo__img > img {
+.photo__img img {
   display: block;
-  max-width:200px;
+  max-width:100px;
   max-height:95px;
   width: auto;
   height: auto;

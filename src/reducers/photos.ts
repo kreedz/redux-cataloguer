@@ -5,12 +5,14 @@ import { IPhoto } from 'reducers';
 const initialState: IPhoto[] =
   [
     {
-      url: 'imgurl1',
+      id: 1,
+      url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
       like: 1,
       date: new Date('2017-06-17'),
     },
     {
-      url: 'imgurl1',
+      id: 2,
+      url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
       like: 1,
       date: new Date('2017-06-17'),
     }
