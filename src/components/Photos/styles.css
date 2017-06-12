@@ -11,3 +11,7 @@
   width: auto;
   height: auto;
 }
+
+.photos_label {
+  word-break: break-all;
+}

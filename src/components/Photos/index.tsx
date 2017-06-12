@@ -26,9 +26,11 @@ const getPhotosLayout = (photos: IPhoto[]) =>
 const Photos: SFC<any> = ({photos}) => (
   <div>
     <Col xs={2}>
-      Фотографии
+      <span className={styles.photosLabel}>
+        Фотографии
+      </span>
     </Col>
-    <Col xs={4}>
+    <Col xs={8}>
       {getPhotosLayout(photos)}
     </Col>
   </div>
