@@ -21,9 +21,9 @@ const Photo: SFC<RouteComponentProps<any>> = (
             <div className={styles.photoView}>
               <img src={url} />
             </div>
-            Date: {date}
+            Дата: {date}
             <br />
-            Likes: {like}
+            Лайков: {like}
           </div>
         </div>
       </Col>

@@ -1,14 +1,32 @@
 .photo {
-  height: 140px;
-  margin-top: 10px;
+  padding: 10px;
 }
 
-.photo__img img {
+.photo__data {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display:table;
+  width: 100%;
+}
+
+.photo__view {
+  height: 110px;
+  border: 1px solid grey;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.photo__view img {
   max-width: 100px;
   max-height: 100px;
   width: auto;
   height: auto;
+}
+
+.photo__date {
+  text-align: center;
 }
 
 .photos_label {

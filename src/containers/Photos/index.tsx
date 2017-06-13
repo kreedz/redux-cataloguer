@@ -24,17 +24,19 @@ const getPhotosLayout = (
       && index + 1 < firstPhotoIndexOnPage + imagesCountOnPage
     ) {
       return (
-        <Col xs={3} className={styles.photo} key={photo.id}>
-          <div className="photo__like">
+        <Col xs={3} key={photo.id}>
+          <div className={styles.photo}>
             Лайков: {photo.like}
-          </div>
-          <div className={styles.photoImg}>
-            <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
-              <img src={photo.url} />
-            </Link>
-          </div>
-          <div className="photo__date">
-            {photo.date}
+            <div className={styles.photoData}>
+              <div className={styles.photoView}>
+                <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
+                  <img src={photo.url} />
+                </Link>
+              </div>
+            </div>
+            <div className={styles.photoDate}>
+              {photo.date}
+            </div>
           </div>
         </Col>
       );
