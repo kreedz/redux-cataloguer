@@ -6,7 +6,7 @@ const initialState: IPhoto[] =
   [
     {
       id: 1,
-      url: 'https://s-media-cache-ak0.pinimg.com/736x/3e/3a/de/3e3adeff192f019738419858f4f998c2.jpg',
+      url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
       like: 1,
       date: '1.06.17',
     },

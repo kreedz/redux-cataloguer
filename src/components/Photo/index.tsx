@@ -15,18 +15,18 @@ const Photo: SFC<RouteComponentProps<any>> = (
   }) => (
   <div>
     <Row className={globalStyles.rowPadding}>
-      <Col xs={4} xsOffset={4}>
-        <div className={styles.photo}>
-          <div className={styles.photoData}>
-            <div className={styles.photoView}>
-              <img src={url} />
-            </div>
+      <div className={styles.photo}>
+        <div className={styles.photoData}>
+          <div className={styles.photoView}>
+            <img src={url} />
+          </div>
+          <div className={styles.centerText}>
             Дата: {date}
             <br />
             Лайков: {like}
           </div>
         </div>
-      </Col>
+      </div>
     </Row>
   </div>
 );
