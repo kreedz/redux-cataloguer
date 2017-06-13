@@ -5,24 +5,27 @@ import { RouteComponentProps } from 'react-router-dom';
 import globalStyles from 'styles/styles.css';
 import styles from './styles.css';
 
-const img = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0i
-            AAAABlBMVEUAAAD///+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83
-            NDDeNGe4Ug9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC`;
-
-const Photo: SFC<RouteComponentProps<any>> = props => (
+const Photo: SFC<RouteComponentProps<any>> = (
+  {
+    location: {
+      state: {
+        photo: {url, date, like, description}
+      }
+    }
+  }) => (
   <div>
     <Row className={globalStyles.rowPadding}>
       <Col xs={4} xsOffset={4}>
         <div className={styles.photo}>
           <div className={styles.photoData}>
             <div className={styles.photoView}>
-              <img src={img} />
+              <img src={url} />
             </div>
-            Date: {props.match.params.imgid}
+            Date: {date}
             <br />
-            Likes: 1
+            Likes: {like}
             <br />
-            Description: 123
+            Description: {description}
           </div>
         </div>
       </Col>

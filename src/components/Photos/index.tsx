@@ -13,12 +13,12 @@ const getPhotosLayout = (photos: IPhoto[]) =>
         Лайков: {photo.like}
       </div>
       <div className={styles.photoImg}>
-        <Link to={`/img/${photo.id}`}>
+        <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
           <img src={photo.url} />
         </Link>
       </div>
       <div className="photo__date">
-        {photo.date.toLocaleDateString()}
+        {photo.date}
       </div>
 </Col>
   ));

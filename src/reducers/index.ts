@@ -6,7 +6,7 @@ export interface IPhoto {
   id: number;
   url: string;
   like?: number;
-  date?: Date;
+  date?: string;
 }
 
 export interface IState {
