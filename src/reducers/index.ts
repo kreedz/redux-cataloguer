@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import pagination from './pagination';
 import photos from './photos';
 
 export interface IPhoto {
@@ -9,10 +10,9 @@ export interface IPhoto {
   date?: string;
 }
 
-export interface IState {
-  photos: IPhoto[];
-  filter?: number;
-  search?: string;
+export interface IPagination {
+  current: number;
+  readonly imagesCountOnPage: number;
 }
 
-export default combineReducers({photos});
+export default combineReducers({photos, pagination});

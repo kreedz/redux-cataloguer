@@ -9,7 +9,7 @@ const Photo: SFC<RouteComponentProps<any>> = (
   {
     location: {
       state: {
-        photo: {url, date, like, description}
+        photo: {url, date, like}
       }
     }
   }) => (
@@ -24,8 +24,6 @@ const Photo: SFC<RouteComponentProps<any>> = (
             Date: {date}
             <br />
             Likes: {like}
-            <br />
-            Description: {description}
           </div>
         </div>
       </Col>

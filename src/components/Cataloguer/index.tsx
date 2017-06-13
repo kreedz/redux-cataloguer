@@ -11,7 +11,7 @@ import styles from './styles.css';
 const Cataloguer: SFC<any> = () => (
   <Grid className={styles.cataloguer}>
     <Switch>
-      <Route exact={true} path="/" component={CataloguerView} />
+      <Route exact path="/" component={CataloguerView} />
       <Route path="/img/:imgid" component={Photo} />
     </Switch>
   </Grid>

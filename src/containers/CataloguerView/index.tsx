@@ -1,15 +1,15 @@
 import React from 'react';
+import { Col, Grid, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { Col, Grid, Row } from 'react-bootstrap';
+import Photos from 'containers/Photos';
 
 import Add from 'components/Add';
 import Filter from 'components/Filter';
-import Photos from 'components/Photos';
 import Search from 'components/Search';
 
-import { loadData } from 'actions';
-import { IState } from 'reducers';
+import { loadData, setCurrentPage } from 'actions';
+import { IPagination, IPhoto } from 'reducers';
 
 import styles from 'styles/styles.css';
 
@@ -28,12 +28,21 @@ class CataloguerView extends React.Component<any, any> {
           <Filter />
         </Row>
         <Row className={styles.rowPadding}>
-          <Photos photos={this.props.photos} />
+          <Photos
+            photos={this.props.photos}
+            pagination={this.props.pagination}
+            setCurrentPage={this.props.setCurrentPage}
+          />
         </Row>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({photos}: {photos: IState}) => ({photos});
-export default connect(mapStateToProps, {loadData})(CataloguerView);
+const mapStateToProps = (
+  {photos, pagination}: {photos: IPhoto[], pagination: IPagination}
+) => ({photos, pagination});
+export default connect(
+  mapStateToProps,
+  {loadData, setCurrentPage}
+)(CataloguerView);

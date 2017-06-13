@@ -14,3 +14,7 @@
 .photos_label {
   word-break: break-all;
 }
+
+.pagination {
+  text-align: center;
+}

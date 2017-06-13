@@ -67,5 +67,6 @@ const initialState: IPhoto[] =
   ];
 
 export default handleActions<IPhoto[]>({
-  // LOAD_DATA: (state: IState, action: Action<void>): IState => state,
+  LOAD_INIT_DATA:
+    (state: IPhoto[], action: Action<void>): IPhoto[] => state,
 }, initialState);
