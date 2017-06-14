@@ -6,8 +6,15 @@ import photos from './photos';
 export interface IPhoto {
   id: number;
   url: string;
-  like?: number;
+  like?: {
+    count: number;
+    isLiked: boolean;
+  };
   date?: string;
+}
+
+export interface IPhotos {
+  [key: string]: IPhoto
 }
 
 export interface IPagination {

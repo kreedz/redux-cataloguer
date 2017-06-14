@@ -8,7 +8,7 @@ import Add from 'components/Add';
 import Filter from 'components/Filter';
 import Search from 'components/Search';
 
-import { loadData, setCurrentPage } from 'actions';
+import { loadData, setCurrentPage, toggleLike } from 'actions';
 import { IPagination, IPhoto } from 'reducers';
 
 import styles from 'styles/styles.css';
@@ -32,6 +32,7 @@ class CataloguerView extends React.Component<any, any> {
             photos={this.props.photos}
             pagination={this.props.pagination}
             setCurrentPage={this.props.setCurrentPage}
+            toggleLike={this.props.toggleLike}
           />
         </Row>
       </div>
@@ -44,5 +45,5 @@ const mapStateToProps = (
 ) => ({photos, pagination});
 export default connect(
   mapStateToProps,
-  {loadData, setCurrentPage}
+  {loadData, setCurrentPage, toggleLike}
 )(CataloguerView);

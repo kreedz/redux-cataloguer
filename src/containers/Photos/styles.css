@@ -25,6 +25,10 @@
   height: auto;
 }
 
+.photo__like:before {
+  content: "👍";
+}
+
 .photo__date {
   text-align: center;
 }
