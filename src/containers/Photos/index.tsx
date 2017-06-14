@@ -4,13 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { IPagination, IPhoto, IPhotos } from 'reducers';
 
+import imgs from 'img';
 import styles from './styles.css';
-
-declare function require(s: string): string;
-const imgs = {
-  liked: require('img/like__liked.png'),
-  notLiked: require('img/like__not_liked.png'),
-};
 
 interface IPhotosProps extends PaginationProps {
   photos: IPhotos;
@@ -62,7 +57,7 @@ class Photos extends React.Component<IPhotosProps, any> {
     const photoId =
       (e.target as HTMLElement).parentElement.parentElement.dataset.id;
     if (typeof photoId === 'undefined') {
-      return
+      return;
     }
     this.props.toggleLike(+photoId);
   }
