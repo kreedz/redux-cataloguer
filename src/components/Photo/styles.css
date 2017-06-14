@@ -9,7 +9,6 @@
 }
 
 .photo__view {
-  border: 1px solid black;
   vertical-align: middle;
   text-align: center;
 }
@@ -20,6 +19,7 @@
   width: auto;
   height: auto;
   padding: 5px;
+  border: 1px solid black;
 }
 
 .center_text {
