@@ -35,7 +35,7 @@ const getPhotosLayout = (
         <Col xs={3} key={photo.id}>
           <div className={styles.photo} data-id={photo.id}>
             <span className={styles.photoLike} onClick={toggleLike}>
-              <img src={imgs.notLiked} />
+              <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
               <span>{photo.like.count}</span>
             </span>
             <div className={styles.photoData}>
@@ -61,7 +61,6 @@ class Photos extends React.Component<IPhotosProps, any> {
   toggleLike = (e: React.MouseEvent<HTMLElement>) => {
     const photoId =
       (e.target as HTMLElement).parentElement.parentElement.dataset.id;
-    console.log(photoId);
     if (typeof photoId === 'undefined') {
       return
     }
