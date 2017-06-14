@@ -6,6 +6,12 @@ import { IPagination, IPhoto, IPhotos } from 'reducers';
 
 import styles from './styles.css';
 
+declare function require(s: string): string;
+const imgs = {
+  liked: require('img/like__liked.png'),
+  notLiked: require('img/like__not_liked.png'),
+};
+
 interface IPhotosProps extends PaginationProps {
   photos: IPhotos;
   pagination: IPagination;
@@ -29,7 +35,8 @@ const getPhotosLayout = (
         <Col xs={3} key={photo.id}>
           <div className={styles.photo} data-id={photo.id}>
             <div className={styles.photoLike} onClick={toggleLike}>
-              {photo.like.count}
+              <img src={imgs.notLiked} />
+              <span>{photo.like.count}</span>
             </div>
             <div className={styles.photoData}>
               <div className={styles.photoView}>
@@ -51,8 +58,9 @@ class Photos extends React.Component<IPhotosProps, any> {
   setCurrentPage = (e: React.MouseEvent<HTMLLIElement>) => {
     this.props.setCurrentPage(e as any as number);
   }
-  toggleLike = (e: React.MouseEvent<HTMLDivElement>) => {
-    const photoId = (e.target as HTMLDivElement).parentElement.dataset.id;
+  toggleLike = (e: React.MouseEvent<HTMLElement>) => {
+    const photoId =
+      (e.target as HTMLElement).parentElement.parentElement.dataset.id;
     this.props.toggleLike(+photoId);
   }
   render() {

@@ -52,15 +52,18 @@ module.exports = {
         ]
       },
       {
-        test: [/\.eot?$/],
+        test: [/\.eot?$/,  /\.png$/,],
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              name: 'static/[name].[ext]',
+            }
           }
         ]
       },
       {
-        test: [/\.woff?$/, /\.woff2?$/, /\.ttf?$/, /\.svg?$/],
+        test: [/\.woff?$/, /\.woff2?$/, /\.ttf?$/, /\.svg?$/,],
         use: [
           {
             loader: 'url-loader'

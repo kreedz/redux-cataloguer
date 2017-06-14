@@ -25,8 +25,12 @@
   height: auto;
 }
 
-.photo__like:before {
-  content: "👍";
+.photo__like > img {
+  padding-right: 5px;
+}
+
+.photo__like {
+  padding-bottom: 5px;
 }
 
 .photo__date {

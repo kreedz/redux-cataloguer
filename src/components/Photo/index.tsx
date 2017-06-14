@@ -9,7 +9,7 @@ const Photo: SFC<RouteComponentProps<any>> = (
   {
     location: {
       state: {
-        photo: {url, date, like}
+        photo: {url, date, like: {count: like}}
       }
     }
   }) => (
