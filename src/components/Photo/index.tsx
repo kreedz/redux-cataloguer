@@ -28,7 +28,7 @@ const Photo: SFC<RouteComponentProps<any>> = (
             <br />
             <span className={photosStyles.photoLike}>
               <img src={like.isLiked ? imgs.liked : imgs.notLiked} />
-              <span>{like.count}</span>
+              <span>{like.count > 0 ? like.count : null}</span>
             </span>
           </div>
         </div>

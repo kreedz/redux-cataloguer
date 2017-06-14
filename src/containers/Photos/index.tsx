@@ -24,14 +24,14 @@ const getPhotosLayout = (
     const firstPhotoIndexOnPage = (current - 1) * imagesCountOnPage;
     if (
       index + 1 > firstPhotoIndexOnPage
-      && index + 1 < firstPhotoIndexOnPage + imagesCountOnPage
+      && index + 1 <= firstPhotoIndexOnPage + imagesCountOnPage
     ) {
       return (
         <Col xs={3} key={photo.id}>
           <div className={styles.photo} data-id={photo.id}>
             <span className={styles.photoLike} onClick={toggleLike}>
               <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
-              <span>{photo.like.count}</span>
+              <span>{photo.like.count > 0 ? photo.like.count : null}</span>
             </span>
             <div className={styles.photoData}>
               <div className={styles.photoView}>
@@ -64,7 +64,26 @@ class Photos extends React.Component<IPhotosProps, any> {
   render() {
     const {photos, pagination} = this.props;
     const photosLength = Object.keys(photos).length;
-    const itemsCount = photosLength / pagination.imagesCountOnPage + 1;
+    const itemsCount = Math.ceil(photosLength / pagination.imagesCountOnPage);
+
+    const renderPagination = () => {
+      if (itemsCount > 1) {
+        return (
+          <Pagination
+            prev
+            next
+            first
+            last
+            ellipsis
+            boundaryLinks
+            items={itemsCount}
+            maxButtons={5}
+            activePage={pagination.current}
+            onSelect={this.setCurrentPage}
+          />
+        );
+      }
+    };
     return (
       <div>
         <Col xs={2}>
@@ -77,18 +96,7 @@ class Photos extends React.Component<IPhotosProps, any> {
         </Col>
         <Row>
           <Col xs={8} xsOffset={2} className={styles.pagination}>
-            <Pagination
-              prev
-              next
-              first
-              last
-              ellipsis
-              boundaryLinks
-              items={itemsCount}
-              maxButtons={5}
-              activePage={pagination.current}
-              onSelect={this.setCurrentPage}
-            />
+            {renderPagination()}
           </Col>
         </Row>
       </div>

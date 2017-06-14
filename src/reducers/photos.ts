@@ -8,7 +8,7 @@ const initialState: IPhotos = {
         id: 1,
         url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -18,7 +18,7 @@ const initialState: IPhotos = {
         id: 2,
         url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -28,7 +28,7 @@ const initialState: IPhotos = {
         id: 3,
         url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -38,7 +38,7 @@ const initialState: IPhotos = {
         id: 4,
         url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -48,7 +48,7 @@ const initialState: IPhotos = {
         id: 5,
         url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -58,7 +58,7 @@ const initialState: IPhotos = {
         id: 6,
         url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -68,7 +68,7 @@ const initialState: IPhotos = {
         id: 7,
         url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -78,7 +78,7 @@ const initialState: IPhotos = {
         id: 8,
         url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
         like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
@@ -86,19 +86,9 @@ const initialState: IPhotos = {
     9:
       {
         id: 9,
-        url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
+        url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
         like: {
-          count: 1,
-          isLiked: false,
-        },
-        date: '1.06.17',
-      },
-    10:
-      {
-        id: 10,
-        url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
-        like: {
-          count: 1,
+          count: 0,
           isLiked: false,
         },
         date: '1.06.17',
