@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import filter from './filter';
 import pagination from './pagination';
 import photos from './photos';
 
@@ -22,4 +23,8 @@ export interface IPagination {
   readonly imagesCountOnPage: number;
 }
 
-export default combineReducers({photos, pagination});
+export interface IFilter {
+  year?: number;
+}
+
+export default combineReducers({photos, pagination, filter});

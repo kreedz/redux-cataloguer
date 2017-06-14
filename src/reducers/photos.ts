@@ -11,7 +11,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '2.06.2017',
       },
     2:
       {
@@ -21,7 +21,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     3:
       {
@@ -31,7 +31,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     4:
       {
@@ -41,17 +41,17 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     5:
       {
         id: 5,
-        url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
+        url: 'https://pbs.twimg.com/profile_images/63491922548062620176/vftXgTc9.jpg',
         like: {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     6:
       {
@@ -61,17 +61,17 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     7:
       {
         id: 7,
-        url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
+        url: 'https://pbs.twimg.com/profile_images/63491922548062620176/vftXgTc9.jpg',
         like: {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     8:
       {
@@ -81,7 +81,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
     9:
       {
@@ -91,7 +91,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.17',
+        date: '1.06.2017',
       },
   };
 

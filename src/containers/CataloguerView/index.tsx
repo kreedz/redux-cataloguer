@@ -8,14 +8,18 @@ import Add from 'components/Add';
 import Filter from 'components/Filter';
 import Search from 'components/Search';
 
-import { loadData, setCurrentPage, toggleLike } from 'actions';
-import { IPagination, IPhoto } from 'reducers';
+import { loadData, setCurrentPage, setFilter, toggleLike } from 'actions';
+import { IFilter, IPagination, IPhoto } from 'reducers';
 
 import styles from 'styles/styles.css';
 
 class CataloguerView extends React.Component<any, any> {
   componentDidMount() {
     this.props.loadData();
+  }
+  setFilter = (event: React.MouseEvent<HTMLElement>) => {
+    const year = (event.target as HTMLElement).textContent;
+    this.props.setFilter(+year);
   }
   render() {
     return (
@@ -25,7 +29,7 @@ class CataloguerView extends React.Component<any, any> {
           <Add />
         </Row>
         <Row className={styles.rowPadding}>
-          <Filter />
+          <Filter setFilter={this.setFilter}/>
         </Row>
         <Row className={styles.rowPadding}>
           <Photos
@@ -33,6 +37,7 @@ class CataloguerView extends React.Component<any, any> {
             pagination={this.props.pagination}
             setCurrentPage={this.props.setCurrentPage}
             toggleLike={this.props.toggleLike}
+            filter={this.props.filter}
           />
         </Row>
       </div>
@@ -41,9 +46,10 @@ class CataloguerView extends React.Component<any, any> {
 }
 
 const mapStateToProps = (
-  {photos, pagination}: {photos: IPhoto[], pagination: IPagination}
-) => ({photos, pagination});
+  {photos, pagination, filter}:
+    {photos: IPhoto[], pagination: IPagination, filter: IFilter}
+) => ({photos, pagination, filter});
 export default connect(
   mapStateToProps,
-  {loadData, setCurrentPage, toggleLike}
+  {loadData, setCurrentPage, toggleLike, setFilter}
 )(CataloguerView);

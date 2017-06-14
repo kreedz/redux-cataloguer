@@ -1,6 +1,6 @@
 import { Action, handleActions } from 'redux-actions';
 
-import { IPagination, IPhoto } from 'reducers';
+import { IPagination } from 'reducers';
 
 const initialState: IPagination = {
   current: 1,

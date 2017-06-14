@@ -2,7 +2,7 @@ import React, { SFC } from 'react';
 import { Col, Pagination, PaginationProps, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { IPagination, IPhoto, IPhotos } from 'reducers';
+import { IFilter, IPagination, IPhoto, IPhotos } from 'reducers';
 
 import imgs from 'img';
 import styles from './styles.css';
@@ -12,15 +12,20 @@ interface IPhotosProps extends PaginationProps {
   pagination: IPagination;
   setCurrentPage: (current: number) => void;
   toggleLike: (id: number) => void;
+  filter: IFilter;
 }
 
 const getPhotosLayout = (
   photos: IPhotos,
   {current, imagesCountOnPage}: IPagination,
   toggleLike: (e: React.MouseEvent<HTMLDivElement>) => void,
+  filter: IFilter,
 ) =>
   Object.keys(photos).map((value: string, index: number) => {
     const photo = photos[value];
+    if (photo.date === '1.06.17') {
+      return;
+    }
     const firstPhotoIndexOnPage = (current - 1) * imagesCountOnPage;
     if (
       index + 1 > firstPhotoIndexOnPage
@@ -65,6 +70,7 @@ class Photos extends React.Component<IPhotosProps, any> {
     const {photos, pagination} = this.props;
     const photosLength = Object.keys(photos).length;
     const itemsCount = Math.ceil(photosLength / pagination.imagesCountOnPage);
+    const filter = this.props.filter;
 
     const renderPagination = () => {
       if (itemsCount > 1) {
@@ -92,7 +98,7 @@ class Photos extends React.Component<IPhotosProps, any> {
           </span>
         </Col>
         <Col xs={8}>
-          {getPhotosLayout(photos, pagination, this.toggleLike)}
+          {getPhotosLayout(photos, pagination, this.toggleLike, filter)}
         </Col>
         <Row>
           <Col xs={8} xsOffset={2} className={styles.pagination}>

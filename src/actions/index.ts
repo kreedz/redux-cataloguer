@@ -25,3 +25,13 @@ export const toggleLike = (id: number) =>
   (dispatch: Dispatch<IPhotos>) => dispatch(
     toggleLikeAction(id)
   );
+
+const setFilterAction = createAction<{year: number}, number>(
+  'SET_FILTER',
+  (year: number) => ({year})
+);
+
+export const setFilter = (year: number) =>
+  (dispatch: Dispatch<IPhotos>) => dispatch(
+    setFilterAction(year)
+  );
