@@ -31,6 +31,7 @@
 
 .photo__like {
   padding-bottom: 5px;
+  display: inline-block;
 }
 
 .photo__date {

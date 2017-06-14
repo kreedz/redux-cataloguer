@@ -34,10 +34,10 @@ const getPhotosLayout = (
       return (
         <Col xs={3} key={photo.id}>
           <div className={styles.photo} data-id={photo.id}>
-            <div className={styles.photoLike} onClick={toggleLike}>
+            <span className={styles.photoLike} onClick={toggleLike}>
               <img src={imgs.notLiked} />
               <span>{photo.like.count}</span>
-            </div>
+            </span>
             <div className={styles.photoData}>
               <div className={styles.photoView}>
                 <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
@@ -61,6 +61,10 @@ class Photos extends React.Component<IPhotosProps, any> {
   toggleLike = (e: React.MouseEvent<HTMLElement>) => {
     const photoId =
       (e.target as HTMLElement).parentElement.parentElement.dataset.id;
+    console.log(photoId);
+    if (typeof photoId === 'undefined') {
+      return
+    }
     this.props.toggleLike(+photoId);
   }
   render() {
