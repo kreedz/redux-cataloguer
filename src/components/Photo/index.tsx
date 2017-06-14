@@ -2,6 +2,9 @@ import React, { SFC } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { RouteComponentProps } from 'react-router-dom';
 
+import imgs from 'img';
+
+import photosStyles from 'containers/Photos/styles.css';
 import globalStyles from 'styles/styles.css';
 import styles from './styles.css';
 
@@ -9,7 +12,7 @@ const Photo: SFC<RouteComponentProps<any>> = (
   {
     location: {
       state: {
-        photo: {url, date, like: {count: like}}
+        photo: {url, date, like},
       }
     }
   }) => (
@@ -23,7 +26,10 @@ const Photo: SFC<RouteComponentProps<any>> = (
           <div className={styles.centerText}>
             Дата: {date}
             <br />
-            Лайков: {like}
+            <span className={photosStyles.photoLike}>
+              <img src={like.isLiked ? imgs.liked : imgs.notLiked} />
+              <span>{like.count}</span>
+            </span>
           </div>
         </div>
       </div>
