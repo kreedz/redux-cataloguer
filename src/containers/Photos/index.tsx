@@ -64,6 +64,29 @@ const getPhotosLayout = (
       }
     });
 
+const getPaginationLayout = (
+  itemsCount: number,
+  pagination: IPagination,
+  setCurrentPage: (e: any) => void
+) => {
+  if (itemsCount > 1) {
+    return (
+      <Pagination
+        prev
+        next
+        first
+        last
+        ellipsis
+        boundaryLinks
+        items={itemsCount}
+        maxButtons={5}
+        activePage={pagination.current}
+        onSelect={setCurrentPage}
+      />
+    );
+  }
+};
+
 class Photos extends React.Component<IPhotosProps, any> {
   setCurrentPage = (e: React.MouseEvent<HTMLLIElement>) => {
     this.props.setCurrentPage(e as any as number);
@@ -82,25 +105,6 @@ class Photos extends React.Component<IPhotosProps, any> {
     photos = getFilteredPhotos(photos, filter);
     const photosLength = Object.keys(photos).length;
     const itemsCount = Math.ceil(photosLength / pagination.imagesCountOnPage);
-
-    const renderPagination = () => {
-      if (itemsCount > 1) {
-        return (
-          <Pagination
-            prev
-            next
-            first
-            last
-            ellipsis
-            boundaryLinks
-            items={itemsCount}
-            maxButtons={5}
-            activePage={pagination.current}
-            onSelect={this.setCurrentPage}
-          />
-        );
-      }
-    };
     return (
       <div>
         <Col xs={2}>
@@ -113,7 +117,7 @@ class Photos extends React.Component<IPhotosProps, any> {
         </Col>
         <Row>
           <Col xs={8} xsOffset={2} className={styles.pagination}>
-            {renderPagination()}
+            {getPaginationLayout(itemsCount, pagination, this.setCurrentPage)}
           </Col>
         </Row>
       </div>
