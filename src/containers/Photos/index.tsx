@@ -15,44 +15,54 @@ interface IPhotosProps extends PaginationProps {
   filter: IFilter;
 }
 
+const getFilteredPhotos = (photos: IPhotos, filter: IFilter) => {
+  if (typeof filter.year === 'undefined') {
+    return photos;
+  }
+  const filteredPhotos: IPhotos = {};
+  Object.keys(photos).map((key: string, index: number) => {
+    if (new Date(photos[key].date).getFullYear() === filter.year) {
+      filteredPhotos[key] = photos[key];
+    }
+  });
+  return filteredPhotos;
+};
+
 const getPhotosLayout = (
   photos: IPhotos,
   {current, imagesCountOnPage}: IPagination,
   toggleLike: (e: React.MouseEvent<HTMLDivElement>) => void,
-  filter: IFilter,
 ) =>
-  Object.keys(photos).map((value: string, index: number) => {
-    const photo = photos[value];
-    if (photo.date === '1.06.17') {
-      return;
-    }
-    const firstPhotoIndexOnPage = (current - 1) * imagesCountOnPage;
-    if (
-      index + 1 > firstPhotoIndexOnPage
-      && index + 1 <= firstPhotoIndexOnPage + imagesCountOnPage
-    ) {
-      return (
-        <Col xs={3} key={photo.id}>
-          <div className={styles.photo} data-id={photo.id}>
-            <span className={styles.photoLike} onClick={toggleLike}>
-              <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
-              <span>{photo.like.count > 0 ? photo.like.count : null}</span>
-            </span>
-            <div className={styles.photoData}>
-              <div className={styles.photoView}>
-                <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
-                  <img src={photo.url} />
-                </Link>
+  Object.keys(photos)
+    .map((value: string, index: number) => {
+      const photo = photos[value];
+      const firstPhotoIndexOnPage = (current - 1) * imagesCountOnPage;
+      if (
+        index + 1 > firstPhotoIndexOnPage
+        && index + 1 <= firstPhotoIndexOnPage + imagesCountOnPage
+      ) {
+        return (
+          <Col xs={3} key={photo.id}>
+            <div className={styles.photo} data-id={photo.id}>
+              <span className={styles.photoLike} onClick={toggleLike}>
+                <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
+                <span>{photo.like.count > 0 ? photo.like.count : null}</span>
+              </span>
+              <div className={styles.photoData}>
+                <div className={styles.photoView}>
+                  <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
+                    <img src={photo.url} />
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.photoDate}>
+                {photo.date}
               </div>
             </div>
-            <div className={styles.photoDate}>
-              {photo.date}
-            </div>
-          </div>
-        </Col>
-      );
-    }
-  });
+          </Col>
+        );
+      }
+    });
 
 class Photos extends React.Component<IPhotosProps, any> {
   setCurrentPage = (e: React.MouseEvent<HTMLLIElement>) => {
@@ -67,10 +77,11 @@ class Photos extends React.Component<IPhotosProps, any> {
     this.props.toggleLike(+photoId);
   }
   render() {
-    const {photos, pagination} = this.props;
+    const { pagination, filter } = this.props;
+    let { photos } = this.props;
+    photos = getFilteredPhotos(photos, filter);
     const photosLength = Object.keys(photos).length;
     const itemsCount = Math.ceil(photosLength / pagination.imagesCountOnPage);
-    const filter = this.props.filter;
 
     const renderPagination = () => {
       if (itemsCount > 1) {
@@ -98,7 +109,7 @@ class Photos extends React.Component<IPhotosProps, any> {
           </span>
         </Col>
         <Col xs={8}>
-          {getPhotosLayout(photos, pagination, this.toggleLike, filter)}
+          {getPhotosLayout(photos, pagination, this.toggleLike)}
         </Col>
         <Row>
           <Col xs={8} xsOffset={2} className={styles.pagination}>
