@@ -114,7 +114,7 @@ function compareStrDates(date1: IPhoto, date2: IPhoto) {
   return getDateMSFromStr(date1.date) - getDateMSFromStr(date2.date);
 }
 
-function getPhotoAndKeyById(photos: IPhotos, id: number) {
+export function getPhotoAndKeyById(photos: IPhotos, id: number) {
   for (const photoKey in photos) {
     if (photos[photoKey].id === id) {
       return {

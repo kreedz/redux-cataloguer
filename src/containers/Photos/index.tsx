@@ -15,6 +15,16 @@ interface IPhotosProps extends PaginationProps {
   filter: IFilter;
 }
 
+export const toggleLikeWrapper = (toggleLikeAction: IPhotosProps['toggleLike']) =>
+  (e: React.MouseEvent<HTMLElement>) => {
+    const photoId =
+      (e.target as HTMLElement).parentElement.parentElement.dataset.id;
+    if (typeof photoId === 'undefined') {
+      return;
+    }
+    toggleLikeAction(+photoId);
+  };
+
 const getFilteredPhotos = (photos: IPhotos, filter: IFilter) => {
   if (typeof filter.year === 'undefined') {
     return photos;
@@ -31,7 +41,9 @@ const getFilteredPhotos = (photos: IPhotos, filter: IFilter) => {
 const getPhotosLayout = (
   photos: IPhotos,
   {current, imagesCountOnPage}: IPagination,
-  toggleLike: (e: React.MouseEvent<HTMLDivElement>) => void,
+  toggleLike: (toggleLikeAction: IPhotosProps['toggleLike']) =>
+    (e: React.MouseEvent<HTMLDivElement>) => void,
+  props: IPhotosProps,
 ) =>
   Object.keys(photos).sort()
     .map((value: string, index: number) => {
@@ -44,13 +56,13 @@ const getPhotosLayout = (
         return (
           <Col xs={3} key={photo.id}>
             <div className={styles.photo} data-id={photo.id}>
-              <span className={styles.photoLike} onClick={toggleLike}>
+              <span className={styles.photoLike} onClick={toggleLike(props.toggleLike)}>
                 <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
                 <span>{photo.like.count > 0 ? photo.like.count : null}</span>
               </span>
               <div className={styles.photoData}>
                 <div className={styles.photoView}>
-                  <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
+                  <Link to={{pathname: `/img/${photo.id}`, state: {id: photo.id}}}>
                     <img src={photo.url} />
                   </Link>
                 </div>
@@ -91,14 +103,6 @@ class Photos extends React.Component<IPhotosProps, any> {
   setCurrentPage = (e: React.MouseEvent<HTMLLIElement>) => {
     this.props.setCurrentPage(e as any as number);
   }
-  toggleLike = (e: React.MouseEvent<HTMLElement>) => {
-    const photoId =
-      (e.target as HTMLElement).parentElement.parentElement.dataset.id;
-    if (typeof photoId === 'undefined') {
-      return;
-    }
-    this.props.toggleLike(+photoId);
-  }
   render() {
     const { pagination, filter } = this.props;
     let { photos } = this.props;
@@ -113,7 +117,7 @@ class Photos extends React.Component<IPhotosProps, any> {
           </span>
         </Col>
         <Col xs={8}>
-          {getPhotosLayout(photos, pagination, this.toggleLike)}
+          {getPhotosLayout(photos, pagination, toggleLikeWrapper, this.props)}
         </Col>
         <Row>
           <Col xs={8} xsOffset={2} className={styles.pagination}>
