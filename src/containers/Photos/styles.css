@@ -45,3 +45,7 @@
 .pagination {
   text-align: center;
 }
+
+.photo__edit {
+  float: right;
+}

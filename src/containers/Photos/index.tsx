@@ -48,6 +48,9 @@ const getPhotosLayout = (
                 <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
                 <span>{photo.like.count > 0 ? photo.like.count : null}</span>
               </span>
+              <span className={styles.photoEdit}>
+                <img src={imgs.edit} />
+              </span>
               <div className={styles.photoData}>
                 <div className={styles.photoView}>
                   <Link to={{pathname: `/img/${photo.id}`, state: {photo}}}>
