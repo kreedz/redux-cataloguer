@@ -57,7 +57,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'static/[name].[ext]',
+              name: '[name].[ext]',
             }
           }
         ]
