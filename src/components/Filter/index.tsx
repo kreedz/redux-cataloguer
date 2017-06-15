@@ -1,9 +1,26 @@
 import React, { SFC } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
+import { IFilter } from 'reducers';
+
 interface IFilterProps {
+  filter: IFilter;
   setFilter: (event: any) => void;
 }
+
+const getFilterButtonsLayout = (props: IFilterProps) => {
+  const buttonsText = [2015, 2016, 2017];
+  return buttonsText.map(text => (
+    <Col xs={4} key={text}>
+      <Button
+        bsStyle={text === props.filter.year ? 'primary' : 'default'}
+        onClick={props.setFilter}
+      >
+        {text}
+      </Button>
+    </Col>
+  ));
+};
 
 const Filter: SFC<IFilterProps> = props => (
   <div>
@@ -11,15 +28,7 @@ const Filter: SFC<IFilterProps> = props => (
       Фильтр по годам
     </Col>
     <Col xs={6}>
-      <Col xs={4}>
-        <Button onClick={props.setFilter}>2015</Button>
-      </Col>
-      <Col xs={4}>
-        <Button onClick={props.setFilter}>2016</Button>
-      </Col>
-      <Col xs={4}>
-        <Button onClick={props.setFilter}>2017</Button>
-      </Col>
+      {getFilterButtonsLayout(props)}
     </Col>
   </div>
 );

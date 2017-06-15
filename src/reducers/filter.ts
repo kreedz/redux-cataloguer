@@ -7,6 +7,7 @@ const initialState: IFilter = {};
 export default handleActions<IFilter>({
   SET_FILTER:
     (state: IFilter, action: Action<IFilter>): IFilter => {
-      return {year: action.payload.year};
+      return state.year === action.payload.year ? {} :
+        {year: action.payload.year};
     }
 }, initialState);

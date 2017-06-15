@@ -93,6 +93,16 @@ const initialState: IPhotos = {
         },
         date: '1.06.2017',
       },
+      10:
+        {
+          id: 10,
+          url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
+          like: {
+            count: 0,
+            isLiked: false,
+          },
+          date: '1.06.2017',
+        },
   };
 
 export default handleActions<IPhotos>({

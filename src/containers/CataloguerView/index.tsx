@@ -19,6 +19,7 @@ class CataloguerView extends React.Component<any, any> {
   }
   setFilter = (event: React.MouseEvent<HTMLElement>) => {
     const year = (event.target as HTMLElement).textContent;
+    this.props.setCurrentPage(1);
     this.props.setFilter(+year);
   }
   render() {
@@ -29,7 +30,10 @@ class CataloguerView extends React.Component<any, any> {
           <Add />
         </Row>
         <Row className={styles.rowPadding}>
-          <Filter setFilter={this.setFilter}/>
+          <Filter
+            filter={this.props.filter}
+            setFilter={this.setFilter}
+          />
         </Row>
         <Row className={styles.rowPadding}>
           <Photos
