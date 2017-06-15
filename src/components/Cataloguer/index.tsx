@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Grid } from 'react-bootstrap';
 
-import Photo from 'components/Photo';
 import CataloguerView from 'containers/CataloguerView';
+import Photo from 'containers/Photo';
 
 import styles from './styles.css';
 
