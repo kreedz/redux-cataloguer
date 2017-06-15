@@ -1,5 +1,5 @@
 import React, { SFC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ import { toggleLikeWrapper } from 'containers/Photos';
 
 import imgs from 'img';
 
-import photosStyles from 'containers/Photos/styles.css';
 import globalStyles from 'styles/styles.css';
 import styles from './styles.css';
 
@@ -42,13 +41,22 @@ class Photo extends React.Component<IPhotoProps, any> {
               <div className={styles.centerText} data-id={photo.id}>
                 Дата: {date}
                 <br />
-                <span className={photosStyles.photoLike}>
+                <span className={styles.photoLike}>
                   <img
                     src={like.isLiked ? imgs.liked : imgs.notLiked}
                     onClick={toggleLikeWrapper(this.props.toggleLike)}
                   />
                   <span>{like.count > 0 ? like.count : null}</span>
                 </span>
+                <FormGroup
+                  controlId="formControlsTextarea"
+                  className={styles.form}
+                >
+                  <FormControl
+                    componentClass="textarea"
+                    placeholder="Описание"
+                  />
+                </FormGroup>
               </div>
             </div>
           </div>

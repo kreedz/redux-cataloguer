@@ -16,7 +16,7 @@ const initialState: IPhotos = {
     2:
       {
         id: 2,
-        url: 'http://leanature.com/wp-content/uploads/2015/09/Slide_g%C3%A9n%C3%A9rique_Groupe.jpg',
+        url: 'https://static.pexels.com/photos/20974/pexels-photo.jpg',
         like: {
           count: 0,
           isLiked: false,
