@@ -33,7 +33,7 @@ const getPhotosLayout = (
   {current, imagesCountOnPage}: IPagination,
   toggleLike: (e: React.MouseEvent<HTMLDivElement>) => void,
 ) =>
-  Object.keys(photos)
+  Object.keys(photos).sort()
     .map((value: string, index: number) => {
       const photo = photos[value];
       const firstPhotoIndexOnPage = (current - 1) * imagesCountOnPage;

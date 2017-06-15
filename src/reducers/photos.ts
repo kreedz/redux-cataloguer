@@ -11,7 +11,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '2.06.2016',
+        date: '2.06.16',
       },
     2:
       {
@@ -21,7 +21,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '1.06.17',
       },
     3:
       {
@@ -31,7 +31,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '1.06.17',
       },
     4:
       {
@@ -41,7 +41,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '12.08.17',
       },
     5:
       {
@@ -51,7 +51,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '5.05.17',
       },
     6:
       {
@@ -61,7 +61,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '1.06.10',
       },
     7:
       {
@@ -71,7 +71,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '1.06.17',
       },
     8:
       {
@@ -81,7 +81,7 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '7.06.17',
       },
     9:
       {
@@ -91,27 +91,59 @@ const initialState: IPhotos = {
           count: 0,
           isLiked: false,
         },
-        date: '1.06.2017',
+        date: '5.06.17',
       },
-      10:
-        {
-          id: 10,
-          url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
-          like: {
-            count: 0,
-            isLiked: false,
-          },
-          date: '1.06.2017',
+    10:
+      {
+        id: 10,
+        url: 'https://static.pexels.com/photos/2946/dawn-nature-sunset-trees.jpg',
+        like: {
+          count: 0,
+          isLiked: false,
         },
+        date: '4.06.18',
+      },
   };
+
+function getDateMSFromStr(date: string) {
+  const [, day, month, year] = /(\d+)\.(\d+).(\d+)/.exec(date);
+  return new Date(2000 + +year, +month - 1, +day).getTime();
+}
+
+function compareStrDates(date1: IPhoto, date2: IPhoto) {
+  return getDateMSFromStr(date1.date) - getDateMSFromStr(date2.date);
+}
+
+function getPhotoAndKeyById(photos: IPhotos, id: number) {
+  for (const photoKey in photos) {
+    if (photos[photoKey].id === id) {
+      return {
+        photo: photos[photoKey],
+        photoKey,
+      };
+    }
+  }
+}
 
 export default handleActions<IPhotos>({
   LOAD_INIT_DATA:
     (state: IPhotos, action: Action<IPhoto>): IPhotos => state,
+  SORT:
+    (state: IPhotos, action: Action<IPhoto>): IPhotos => {
+      const o = Object.keys(state).map(key => state[key])
+                      .sort(compareStrDates)
+                      .reverse();
+      const sorted: IPhotos = {};
+      let i = 0;
+      for (const e of o) {
+        sorted[i++] = e;
+      }
+      return sorted;
+    },
   TOGGLE_LIKE:
     (state: IPhotos, action: Action<IPhoto>): IPhotos => {
       const id = action.payload.id;
-      const photo = state[id];
+      const { photo, photoKey } = getPhotoAndKeyById(state, id);
       if (photo.like.isLiked) {
         --photo.like.count;
       } else {
@@ -119,7 +151,7 @@ export default handleActions<IPhotos>({
       }
       photo.like.isLiked = !photo.like.isLiked;
       return {
-        ...state, [id]: photo
+        ...state, [photoKey]: photo
       };
     },
 }, initialState);

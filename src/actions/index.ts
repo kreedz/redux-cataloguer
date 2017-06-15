@@ -4,7 +4,10 @@ import { createAction } from 'redux-actions';
 import { IPagination, IPhotos } from 'reducers';
 
 export const loadData = () =>
-  (dispatch: Dispatch<IPhotos>) => dispatch(createAction('LOAD_INIT_DATA')());
+  (dispatch: Dispatch<IPhotos>) => {
+    dispatch(createAction('LOAD_INIT_DATA')());
+    dispatch(createAction('SORT')());
+  };
 
 const setCurrentPageAction = createAction<{current: number}, number>(
   'SET_PAGINATION_PAGE',
