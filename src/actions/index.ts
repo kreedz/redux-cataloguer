@@ -38,3 +38,16 @@ export const setFilter = (year: number) =>
   (dispatch: Dispatch<IPhotos>) => dispatch(
     setFilterAction(year)
   );
+
+const setDescriptionAction = createAction<
+  {description: string; id: number},
+  string,
+  number
+>('SET_DESCRIPTION',
+  (description: string, id: number) => ({description, id})
+);
+
+export const setDescription = (description: string, id: number) =>
+  (dispatch: Dispatch<IPhotos>) => dispatch(
+    setDescriptionAction(description, id)
+  );

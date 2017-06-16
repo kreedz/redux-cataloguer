@@ -3,7 +3,7 @@ import { Button, Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bo
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { toggleLike } from 'actions';
+import { setDescription, toggleLike } from 'actions';
 import { IPhotos } from 'reducers';
 import { getPhotoAndKeyById } from 'reducers/photos';
 
@@ -17,9 +17,16 @@ import styles from './styles.css';
 interface IPhotoProps extends RouteComponentProps<any> {
   photos: IPhotos;
   toggleLike: (id: number) => void;
+  setDescription: (description: string, id: number) => void;
 }
 
 class Photo extends React.Component<IPhotoProps, any> {
+  setDescription = (event: React.FormEvent<FormControl>) => {
+    const id = this.props.location.state.id;
+    const description = (event.target as HTMLTextAreaElement).value;
+    this.props.setDescription(description, id);
+  }
+  getDescriptionByKey = (key: number) => getPhotoAndKeyById(this.props.photos, key).photo.description;
   render() {
     const {
       location: {
@@ -62,10 +69,10 @@ class Photo extends React.Component<IPhotoProps, any> {
                   <FormControl
                     componentClass="textarea"
                     placeholder="Описание"
-                    value={description}
+                    value={this.getDescriptionByKey(id)}
+                    onChange={this.setDescription}
                   />
                 </FormGroup>
-                <Button>Сохранить</Button>
               </div>
             </div>
           </div>
@@ -80,5 +87,5 @@ const mapStateToProps = (
 ) => ({photos});
 export default connect(
   mapStateToProps,
-  {toggleLike}
+  {toggleLike, setDescription}
 )(Photo);

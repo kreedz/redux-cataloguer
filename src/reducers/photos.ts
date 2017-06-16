@@ -155,4 +155,13 @@ export default handleActions<IPhotos>({
         ...state, [photoKey]: photo
       };
     },
+  SET_DESCRIPTION:
+    (state: IPhotos, action: Action<IPhoto>): IPhotos => {
+      const { id, description } = action.payload;
+      const { photo, photoKey } = getPhotoAndKeyById(state, id);
+      photo.description = description;
+      return {
+        ...state, [photoKey]: photo
+      };
+    },
 }, initialState);
