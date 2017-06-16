@@ -27,7 +27,7 @@ const initialState: IPhotos = {
     3:
       {
         id: 3,
-        url: 'https://pbs.twimg.com/profile_images/634919225480626176/vftXgTc9.jpg',
+        url: 'https://static.pexels.com/photos/20974/pexels-photo.jpg',
         like: {
           count: 0,
           isLiked: false,
@@ -47,7 +47,7 @@ const initialState: IPhotos = {
     5:
       {
         id: 5,
-        url: 'https://pbs.twimg.com/profile_images/63491922548062620176/vftXgTc9.jpg',
+        url: 'https://static.pexels.com/photos/20974/pexels-photo.jpg',
         like: {
           count: 0,
           isLiked: false,
@@ -67,7 +67,7 @@ const initialState: IPhotos = {
     7:
       {
         id: 7,
-        url: 'https://pbs.twimg.com/profile_images/63491922548062620176/vftXgTc9.jpg',
+        url: 'https://static.pexels.com/photos/20974/pexels-photo.jpg',
         like: {
           count: 0,
           isLiked: false,
