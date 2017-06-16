@@ -50,7 +50,7 @@ const getPhotosFilteredByDescription = (
   Object.keys(photos).map((key: string) => {
     const photoDescription = photos[key].description;
     if (
-      typeof description !== 'undefined'
+      typeof photoDescription !== 'undefined'
       && photoDescription.includes(description)
     ) {
       filteredByDescription[key] = photos[key];
