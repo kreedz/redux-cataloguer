@@ -9,7 +9,6 @@ const Add: SFC<IAddProps> = props => (
   <Col xs={4} xsOffset={4} className="text-center">
     <input
       type="file"
-      value="123"
       onChange={props.handleImageChange}
     />
   </Col>
