@@ -1,5 +1,7 @@
 import React, { SFC } from 'react';
-import { Button, Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bootstrap';
+import {
+  Button, Col, ControlLabel, FormControl, FormGroup, Row
+} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -26,7 +28,8 @@ class Photo extends React.Component<IPhotoProps, any> {
     const description = (event.target as HTMLTextAreaElement).value;
     this.props.setDescription(description, id);
   }
-  getDescriptionByKey = (key: number) => getPhotoAndKeyById(this.props.photos, key).photo.description;
+  getDescriptionByKey = (key: number) =>
+    getPhotoAndKeyById(this.props.photos, key).photo.description
   render() {
     const {
       location: {
@@ -37,6 +40,7 @@ class Photo extends React.Component<IPhotoProps, any> {
     } = this.props;
     const {photo, photoKey} = getPhotoAndKeyById(this.props.photos, id);
     const {url, date, like, description} = photo;
+    const {showImage, hideImage} = styles;
     return (
       <div>
         <Row className={globalStyles.rowPadding}>
@@ -54,11 +58,11 @@ class Photo extends React.Component<IPhotoProps, any> {
                 >
                   <img
                     src={imgs.liked}
-                    className={like.isLiked ? styles.showImage : styles.hideImage}
+                    className={like.isLiked ? showImage : hideImage}
                   />
                   <img
                     src={imgs.notLiked}
-                    className={like.isLiked ? styles.hideImage : styles.showImage}
+                    className={like.isLiked ? hideImage : showImage}
                   />
                   <span>{like.count > 0 ? like.count : null}</span>
                 </span>
