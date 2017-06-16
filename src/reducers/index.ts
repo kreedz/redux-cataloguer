@@ -12,6 +12,7 @@ export interface IPhoto {
     isLiked: boolean;
   };
   date?: string;
+  description?: string;
 }
 
 export interface IPhotos {

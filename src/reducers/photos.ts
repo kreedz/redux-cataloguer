@@ -12,6 +12,7 @@ const initialState: IPhotos = {
           isLiked: false,
         },
         date: '2.06.16',
+        description: 'description1',
       },
     2:
       {

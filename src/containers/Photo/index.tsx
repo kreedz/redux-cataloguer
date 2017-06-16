@@ -62,6 +62,7 @@ class Photo extends React.Component<IPhotoProps, any> {
                   <FormControl
                     componentClass="textarea"
                     placeholder="Описание"
+                    value={description}
                   />
                 </FormGroup>
                 <Button>Сохранить</Button>
