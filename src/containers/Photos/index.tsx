@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { IFilter, IPagination, IPhoto, IPhotos } from 'reducers';
 
 import imgs from 'img';
+
+import photosStyles from 'containers/Photo/styles.css';
 import styles from './styles.css';
 
 interface IPhotosProps extends PaginationProps {
@@ -53,11 +55,23 @@ const getPhotosLayout = (
         index + 1 > firstPhotoIndexOnPage
         && index + 1 <= firstPhotoIndexOnPage + imagesCountOnPage
       ) {
+        const like = photo.like;
+        const {showImage, hideImage} = photosStyles;
         return (
           <Col xs={3} key={photo.id}>
             <div className={styles.photo} data-id={photo.id}>
-              <span className={styles.photoLike} onClick={toggleLike(props.toggleLike)}>
-                <img src={photo.like.isLiked ? imgs.liked : imgs.notLiked} />
+              <span
+                className={styles.photoLike}
+                onClick={toggleLike(props.toggleLike)}
+              >
+                <img
+                  src={imgs.liked}
+                  className={like.isLiked ? showImage : hideImage}
+                />
+                <img
+                  src={imgs.notLiked}
+                  className={like.isLiked ? hideImage : showImage}
+                />
                 <span>{photo.like.count > 0 ? photo.like.count : null}</span>
               </span>
               <div className={styles.photoData}>
