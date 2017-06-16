@@ -43,7 +43,7 @@ const getPhotosFilteredByYear = (photos: IPhotos, year: IFilter['year']) => {
 const getPhotosFilteredByDescription = (
   photos: IPhotos, description: IFilter['description']
 ) => {
-  if (typeof description === 'undefined') {
+  if (typeof description === 'undefined' || description === '') {
     return photos;
   }
   const filteredByDescription: IPhotos = {};

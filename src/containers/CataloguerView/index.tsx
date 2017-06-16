@@ -22,19 +22,11 @@ class CataloguerView extends React.Component<any, any> {
     this.props.setCurrentPage(1);
     this.props.setFilter({year: +year});
   }
-  setDescriptionFilter = (event: React.MouseEvent<HTMLElement>) => {
-    const description = (event.target as HTMLElement).textContent;
-    this.props.setCurrentPage(1);
-    this.props.setFilter({description: '1'});
-  }
   render() {
     return (
       <div>
         <Row className={styles.rowPadding}>
-          <Search
-            description={this.props.filter.description}
-            setDescriptionFilter={this.setDescriptionFilter}
-          />
+          <Search />
           <Add />
         </Row>
         <Row className={styles.rowPadding}>
