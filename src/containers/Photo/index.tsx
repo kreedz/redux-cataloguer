@@ -1,5 +1,5 @@
 import React, { SFC } from 'react';
-import { Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bootstrap';
+import { Button, Col, ControlLabel, FormControl, FormGroup, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -57,6 +57,7 @@ class Photo extends React.Component<IPhotoProps, any> {
                     placeholder="Описание"
                   />
                 </FormGroup>
+                <Button>Сохранить</Button>
               </div>
             </div>
           </div>
