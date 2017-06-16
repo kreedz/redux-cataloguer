@@ -17,22 +17,30 @@ class CataloguerView extends React.Component<any, any> {
   componentDidMount() {
     this.props.loadData();
   }
-  setFilter = (event: React.MouseEvent<HTMLElement>) => {
+  setYearFilter = (event: React.MouseEvent<HTMLElement>) => {
     const year = (event.target as HTMLElement).textContent;
     this.props.setCurrentPage(1);
-    this.props.setFilter(+year);
+    this.props.setFilter({year: +year});
+  }
+  setDescriptionFilter = (event: React.MouseEvent<HTMLElement>) => {
+    const description = (event.target as HTMLElement).textContent;
+    this.props.setCurrentPage(1);
+    this.props.setFilter({description: '1'});
   }
   render() {
     return (
       <div>
         <Row className={styles.rowPadding}>
-          <Search />
+          <Search
+            description={this.props.filter.description}
+            setDescriptionFilter={this.setDescriptionFilter}
+          />
           <Add />
         </Row>
         <Row className={styles.rowPadding}>
           <Filter
-            filter={this.props.filter}
-            setFilter={this.setFilter}
+            year={this.props.filter.year}
+            setYearFilter={this.setYearFilter}
           />
         </Row>
         <Row className={styles.rowPadding}>

@@ -27,17 +27,43 @@ export const toggleLikeWrapper = (toggleLikeAction: IPhotosProps['toggleLike']) 
     toggleLikeAction(+photoId);
   };
 
-const getFilteredPhotos = (photos: IPhotos, filter: IFilter) => {
-  if (typeof filter.year === 'undefined') {
+const getPhotosFilteredByYear = (photos: IPhotos, year: IFilter['year']) => {
+  if (typeof year === 'undefined') {
     return photos;
   }
-  const filteredPhotos: IPhotos = {};
-  Object.keys(photos).map((key: string, index: number) => {
-    if (new Date(photos[key].date).getFullYear() === filter.year) {
-      filteredPhotos[key] = photos[key];
+  const filteredByYear: IPhotos = {};
+  Object.keys(photos).map((key: string) => {
+    if (new Date(photos[key].date).getFullYear() === year) {
+      filteredByYear[key] = photos[key];
     }
   });
-  return filteredPhotos;
+  return filteredByYear;
+};
+
+const getPhotosFilteredByDescription = (
+  photos: IPhotos, description: IFilter['description']
+) => {
+  if (typeof description === 'undefined') {
+    return photos;
+  }
+  const filteredByDescription: IPhotos = {};
+  Object.keys(photos).map((key: string) => {
+    const photoDescription = photos[key].description;
+    if (
+      typeof description !== 'undefined'
+      && photoDescription.includes(description)
+    ) {
+      filteredByDescription[key] = photos[key];
+    }
+  });
+  return filteredByDescription;
+};
+
+const getFilteredPhotos = (photos: IPhotos, filter: IFilter) => {
+  const photosFilteredByYear = getPhotosFilteredByYear(photos, filter.year);
+  return getPhotosFilteredByDescription(
+    photosFilteredByYear, filter.description
+  );
 };
 
 const getPhotosLayout = (

@@ -4,8 +4,8 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { IFilter } from 'reducers';
 
 interface IFilterProps {
-  filter: IFilter;
-  setFilter: (event: any) => void;
+  year: number;
+  setYearFilter: (event: any) => void;
 }
 
 const getFilterButtonsLayout = (props: IFilterProps) => {
@@ -13,8 +13,8 @@ const getFilterButtonsLayout = (props: IFilterProps) => {
   return buttonsText.map(text => (
     <Col xs={4} key={text}>
       <Button
-        bsStyle={text === props.filter.year ? 'primary' : 'default'}
-        onClick={props.setFilter}
+        bsStyle={text === props.year ? 'primary' : 'default'}
+        onClick={props.setYearFilter}
       >
         {text}
       </Button>

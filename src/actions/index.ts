@@ -1,7 +1,7 @@
 import { Action, Dispatch } from 'redux';
 import { createAction } from 'redux-actions';
 
-import { IPagination, IPhotos } from 'reducers';
+import { IFilter, IPagination, IPhotos } from 'reducers';
 
 export const loadData = () =>
   (dispatch: Dispatch<IPhotos>) => {
@@ -29,14 +29,14 @@ export const toggleLike = (id: number) =>
     toggleLikeAction(id)
   );
 
-const setFilterAction = createAction<{year: number}, number>(
+const setFilterAction = createAction<IFilter, IFilter>(
   'SET_FILTER',
-  (year: number) => ({year})
+  (filters: IFilter) => filters
 );
 
-export const setFilter = (year: number) =>
+export const setFilter = (filters: IFilter) =>
   (dispatch: Dispatch<IPhotos>) => dispatch(
-    setFilterAction(year)
+    setFilterAction(filters)
   );
 
 const setDescriptionAction = createAction<

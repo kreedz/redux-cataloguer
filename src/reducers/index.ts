@@ -26,6 +26,7 @@ export interface IPagination {
 
 export interface IFilter {
   year?: number;
+  description?: string;
 }
 
 export default combineReducers({photos, pagination, filter});
