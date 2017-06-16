@@ -29,7 +29,7 @@ class Photo extends React.Component<IPhotoProps, any> {
       }
     } = this.props;
     const {photo, photoKey} = getPhotoAndKeyById(this.props.photos, id);
-    const {url, date, like} = photo;
+    const {url, date, like, description} = photo;
     return (
       <div>
         <Row className={globalStyles.rowPadding}>
@@ -41,10 +41,17 @@ class Photo extends React.Component<IPhotoProps, any> {
               <div className={styles.centerText} data-id={photo.id}>
                 Дата: {date}
                 <br />
-                <span className={styles.photoLike}>
+                <span
+                  className={styles.photoLike}
+                  onClick={toggleLikeWrapper(this.props.toggleLike)}
+                >
                   <img
-                    src={like.isLiked ? imgs.liked : imgs.notLiked}
-                    onClick={toggleLikeWrapper(this.props.toggleLike)}
+                    src={imgs.liked}
+                    className={like.isLiked ? styles.showImage : styles.hideImage}
+                  />
+                  <img
+                    src={imgs.notLiked}
+                    className={like.isLiked ? styles.hideImage : styles.showImage}
                   />
                   <span>{like.count > 0 ? like.count : null}</span>
                 </span>
