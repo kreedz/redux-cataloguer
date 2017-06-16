@@ -1,9 +1,17 @@
 import React, { SFC } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
-const Add: SFC<any> = () => (
+interface IAddProps {
+  handleImageChange: (event: any) => void;
+}
+
+const Add: SFC<IAddProps> = props => (
   <Col xs={4} xsOffset={4} className="text-center">
-    <Button>Добавить ещё</Button>
+    <input
+      type="file"
+      value="123"
+      onChange={props.handleImageChange}
+    />
   </Col>
 );
 
