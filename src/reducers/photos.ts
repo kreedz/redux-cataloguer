@@ -2,6 +2,12 @@ import { Action, handleActions } from 'redux-actions';
 
 import { IPhoto, IPhotos } from 'reducers';
 
+const getLastId = (photos: IPhotos) =>
+  Math.max(...Object.keys(photos).map(k => photos[k].id));
+
+const getLastKey = (photos: IPhotos) =>
+  Math.max(...Object.keys(photos).map(k => +k));
+
 const initialState: IPhotos = {
     1:
       {
@@ -162,6 +168,27 @@ export default handleActions<IPhotos>({
       photo.description = description;
       return {
         ...state, [photoKey]: photo
+      };
+    },
+  ADD_PHOTO:
+    (state: IPhotos, action: Action<IPhoto['url']>): IPhotos => {
+      const date = new Date();
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear() % 100;
+      const photo: IPhoto = {
+        id: getLastId(state) + 1,
+        url: action.payload,
+        like: {
+          count: 0,
+          isLiked: false,
+        },
+        date: `${day}.${month}.${year}`,
+      };
+      const key: number = getLastKey(state) + 1;
+
+      return {
+        ...state, [key]: photo
       };
     },
 }, initialState);

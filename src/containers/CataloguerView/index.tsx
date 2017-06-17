@@ -8,7 +8,9 @@ import Add from 'components/Add';
 import Filter from 'components/Filter';
 import Search from 'components/Search';
 
-import { loadData, setCurrentPage, setFilter, toggleLike } from 'actions';
+import {
+  addPhoto, loadData, setCurrentPage, setFilter, toggleLike
+} from 'actions';
 import { IFilter, IPagination, IPhoto } from 'reducers';
 
 import styles from 'styles/styles.css';
@@ -33,10 +35,7 @@ class CataloguerView extends React.Component<any, any> {
     const reader = new FileReader();
     const file = event.target.files[0];
     reader.onloadend = () => {
-      this.setState({
-        file,
-        imagePreviewUrl: reader.result
-      });
+      this.props.addPhoto(reader.result);
     };
     reader.readAsDataURL(file);
   }
@@ -46,7 +45,6 @@ class CataloguerView extends React.Component<any, any> {
         <Row className={styles.rowPadding}>
           <Search />
           <Add handleImageChange={this.handleImageChange}/>
-          <img src={this.state.imagePreviewUrl} />
         </Row>
         <Row className={styles.rowPadding}>
           <Filter
@@ -74,5 +72,5 @@ const mapStateToProps = (
 ) => ({photos, pagination, filter});
 export default connect(
   mapStateToProps,
-  {loadData, setCurrentPage, toggleLike, setFilter}
+  {loadData, setCurrentPage, toggleLike, setFilter, addPhoto}
 )(CataloguerView);

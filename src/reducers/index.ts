@@ -7,7 +7,7 @@ import photos from './photos';
 export interface IPhoto {
   id: number;
   url: string;
-  like?: {
+  like: {
     count: number;
     isLiked: boolean;
   };

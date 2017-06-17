@@ -1,7 +1,7 @@
 import { Action, Dispatch } from 'redux';
 import { createAction } from 'redux-actions';
 
-import { IFilter, IPagination, IPhotos } from 'reducers';
+import { IFilter, IPagination, IPhoto, IPhotos } from 'reducers';
 
 export const loadData = () =>
   (dispatch: Dispatch<IPhotos>) => {
@@ -50,4 +50,14 @@ const setDescriptionAction = createAction<
 export const setDescription = (description: string, id: number) =>
   (dispatch: Dispatch<IPhotos>) => dispatch(
     setDescriptionAction(description, id)
+  );
+
+const addPhotoAction = createAction<IPhoto['url'], IPhoto['url']>(
+  'ADD_PHOTO',
+  (url: IPhoto['url']) => url
+);
+
+export const addPhoto = (url: IPhoto['url']) =>
+  (dispatch: Dispatch<IPhotos>) => dispatch(
+    addPhotoAction(url)
   );
