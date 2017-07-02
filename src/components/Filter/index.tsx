@@ -25,7 +25,7 @@ const getFilterButtonsLayout = (props: IFilterProps) => {
 const Filter: SFC<IFilterProps> = props => (
   <div>
     <Col xs={2}>
-      Фильтр по годам
+      Filter by years
     </Col>
     <Col xs={6}>
       {getFilterButtonsLayout(props)}

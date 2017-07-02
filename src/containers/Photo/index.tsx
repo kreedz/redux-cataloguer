@@ -50,7 +50,7 @@ class Photo extends React.Component<IPhotoProps, any> {
                 <img src={url} />
               </div>
               <div className={styles.centerText} data-id={photo.id}>
-                Дата: {date}
+                Date: {date}
                 <br />
                 <span
                   className={styles.photoLike}
@@ -72,7 +72,7 @@ class Photo extends React.Component<IPhotoProps, any> {
                 >
                   <FormControl
                     componentClass="textarea"
-                    placeholder="Описание"
+                    placeholder="Description"
                     value={this.getDescriptionByKey(id)}
                     onChange={this.setDescription}
                   />

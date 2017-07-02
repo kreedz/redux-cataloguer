@@ -8,7 +8,7 @@ import Photo from 'containers/Photo';
 
 import styles from './styles.css';
 
-const Cataloguer: SFC<any> = () => (
+const Cataloguer = () => (
   <Grid className={styles.cataloguer}>
     <Switch>
       <Route exact path="/" component={CataloguerView} />

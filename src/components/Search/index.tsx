@@ -25,7 +25,7 @@ class Search extends React.Component<any, any> {
             inputRef={this.setInputRef}
           />
           <div className="input-group-btn">
-            <Button onClick={this.setDescriptionFilter}>Поиск</Button>
+            <Button onClick={this.setDescriptionFilter}>Search</Button>
           </div>
         </div>
       </Col>

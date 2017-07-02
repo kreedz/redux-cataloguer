@@ -10,7 +10,7 @@ interface IAddProps {
 const Add: SFC<IAddProps> = props => (
   <Col xs={4} xsOffset={4} className="text-center">
   <div>
-     <label htmlFor={styles.files} className="btn btn-default">Добавить</label>
+     <label htmlFor={styles.files} className="btn btn-default">Add</label>
      <input id={styles.files} type="file" onChange={props.handleImageChange}/>
    </div>
   </Col>
