@@ -89,11 +89,7 @@ const mapStateToProps = (
     {photos: IPhotos, pagination: IPagination, filter: IFilter}
 ): IStateProps => ({photos, pagination, filter});
 
-const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
-  loadData, setCurrentPage, toggleLike, setFilter, addPhoto
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+ {loadData, setCurrentPage, toggleLike, setFilter, addPhoto}
 )(CataloguerView);
