@@ -6,7 +6,7 @@ module.exports = {
     './src/index.tsx'
   ],
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('dist/assets'),
     filename: 'prod.bundle.js',
     sourceMapFilename: 'prod.map'
   },
