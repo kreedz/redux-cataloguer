@@ -1,12 +1,12 @@
 import React, { SFC } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import Cataloguer from 'components/Cataloguer';
 
 const App: SFC<any> = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Cataloguer />
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default App;
