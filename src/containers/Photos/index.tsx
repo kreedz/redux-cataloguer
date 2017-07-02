@@ -158,7 +158,7 @@ class Photos extends React.Component<IPhotosProps, any> {
       <div>
         <Col xs={2}>
           <span className={styles.photosLabel}>
-            Фотографии
+            Photo
           </span>
         </Col>
         <Col xs={8}>
