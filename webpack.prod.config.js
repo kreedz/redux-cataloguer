@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve('dist/assets'),
     filename: 'prod.bundle.js',
-    sourceMapFilename: 'prod.map'
+    publicPath: 'static/'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -126,6 +126,9 @@ module.exports = {
         screw_ie8: true
       },
       comments: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 }
