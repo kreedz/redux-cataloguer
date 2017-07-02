@@ -17,6 +17,11 @@ interface IPhotosProps extends PaginationProps {
   filter: IFilter;
 }
 
+const normalizeDateStr = (dateStr: string) => {
+  const [ day, month, year ] = dateStr.split('.');
+  return `${month}.${day}.${year}`;
+};
+
 export const toggleLikeWrapper = (toggleLikeAction: IPhotosProps['toggleLike']) =>
   (e: React.MouseEvent<HTMLElement>) => {
     const photoId =
@@ -33,7 +38,7 @@ const getPhotosFilteredByYear = (photos: IPhotos, year: IFilter['year']) => {
   }
   const filteredByYear: IPhotos = {};
   Object.keys(photos).map((key: string) => {
-    if (new Date(photos[key].date).getFullYear() === year) {
+    if (new Date(normalizeDateStr(photos[key].date)).getFullYear() === year) {
       filteredByYear[key] = photos[key];
     }
   });
