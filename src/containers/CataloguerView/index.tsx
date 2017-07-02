@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { RouteComponentProps, RouteProps } from 'react-router-dom';
 
 import Photos from 'containers/Photos';
 
@@ -11,12 +12,29 @@ import Search from 'components/Search';
 import {
   addPhoto, loadData, setCurrentPage, setFilter, toggleLike
 } from 'actions';
-import { IFilter, IPagination, IPhoto } from 'reducers';
+import { IFilter, IPagination, IPhoto, IPhotos } from 'reducers';
 
 import styles from 'styles/styles.css';
 
-class CataloguerView extends React.Component<any, any> {
-  constructor(props: any) {
+interface IStateProps {
+  photos: IPhotos;
+  pagination: IPagination;
+  filter: IFilter;
+}
+
+interface IDispatchProps {
+  loadData(): void;
+  setCurrentPage(current: number): void;
+  setFilter(filters: IFilter): void;
+  addPhoto(url: IPhoto['url']): void;
+  toggleLike(id: number): void;
+}
+
+export interface ICataloguerViewRouteProps
+extends RouteProps, IStateProps, IDispatchProps {}
+
+class CataloguerView extends React.Component<ICataloguerViewRouteProps, any> {
+  constructor(props: ICataloguerViewRouteProps) {
     super(props);
     this.state = {
       imagePreviewUrl: '',
@@ -68,9 +86,14 @@ class CataloguerView extends React.Component<any, any> {
 
 const mapStateToProps = (
   {photos, pagination, filter}:
-    {photos: IPhoto[], pagination: IPagination, filter: IFilter}
-) => ({photos, pagination, filter});
+    {photos: IPhotos, pagination: IPagination, filter: IFilter}
+): IStateProps => ({photos, pagination, filter});
+
+const mapDispatchToProps = (dispatch: any): IDispatchProps => ({
+  loadData, setCurrentPage, toggleLike, setFilter, addPhoto
+});
+
 export default connect(
   mapStateToProps,
-  {loadData, setCurrentPage, toggleLike, setFilter, addPhoto}
+  mapDispatchToProps
 )(CataloguerView);

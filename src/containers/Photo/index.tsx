@@ -3,7 +3,7 @@ import {
   Button, Col, ControlLabel, FormControl, FormGroup, Row
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, RouteProps } from 'react-router-dom';
 
 import { setDescription, toggleLike } from 'actions';
 import { IPhotos } from 'reducers';
@@ -16,7 +16,7 @@ import imgs from 'img';
 import globalStyles from 'styles/styles.css';
 import styles from './styles.css';
 
-interface IPhotoProps extends RouteComponentProps<any> {
+interface IPhotoProps extends RouteProps {
   photos: IPhotos;
   toggleLike: (id: number) => void;
   setDescription: (description: string, id: number) => void;
